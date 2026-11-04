@@ -1,0 +1,272 @@
+{
+  "version": "1.0.0",
+  "always": ["core/engineering.md"],
+  "core": {
+    "project-analysis": {
+      "path": "core/project-analysis.md",
+      "when": "Any existing repository or unfamiliar stack",
+      "signals": ["analyze", "existing", "unfamiliar", "legacy", "audit"]
+    },
+    "architecture": {
+      "path": "core/architecture.md",
+      "when": "Design, boundaries, technology selection, or structural change",
+      "signals": ["architecture", "design", "scalability", "boundaries", "adr", "migration"]
+    },
+    "testing": {
+      "path": "core/testing.md",
+      "when": "Test strategy, TDD, coverage gaps, flaky tests",
+      "signals": ["test", "coverage", "flaky", "tdd", "quality"]
+    }
+  },
+  "workflows": {
+    "new-project": {
+      "path": "workflows/new-project.md",
+      "signals": ["new project", "greenfield", "from scratch", "bootstrap", "scaffold", "init"]
+    },
+    "existing-project": {
+      "path": "workflows/existing-project.md",
+      "signals": ["existing", "unfamiliar", "legacy", "onboard", "understand", "analyze"]
+    },
+    "feature": {
+      "path": "workflows/feature.md",
+      "signals": ["add", "implement", "feature", "build", "create", "support"]
+    },
+    "bugfix": {
+      "path": "workflows/bugfix.md",
+      "signals": ["bug", "fix", "error", "crash", "regression", "broken", "fails", "exception"]
+    },
+    "refactor": {
+      "path": "workflows/refactor.md",
+      "signals": ["refactor", "restructure", "cleanup", "simplify", "technical debt", "extract"]
+    },
+    "architecture": {
+      "path": "workflows/architecture.md",
+      "signals": ["architecture", "design", "adr", "tradeoff", "technology choice", "system design"]
+    },
+    "code-review": {
+      "path": "workflows/code-review.md",
+      "signals": ["review", "pull request", "pr", "diff", "merge"]
+    },
+    "testing": {
+      "path": "workflows/testing.md",
+      "signals": ["test strategy", "coverage", "unit test", "integration test", "e2e", "flaky"]
+    },
+    "security-review": {
+      "path": "workflows/security-review.md",
+      "signals": ["security review", "threat model", "vulnerability", "penetration", "audit", "cve"]
+    },
+    "performance": {
+      "path": "workflows/performance.md",
+      "signals": ["performance", "slow", "latency", "memory", "cpu", "optimize", "profile", "bottleneck"]
+    },
+    "dependencies": {
+      "path": "workflows/dependencies.md",
+      "signals": ["dependency", "dependencies", "upgrade", "package", "cve", "audit", "lockfile"]
+    },
+    "release": {
+      "path": "workflows/release.md",
+      "signals": ["release", "deploy", "ship", "production", "rollback", "version", "publish"]
+    }
+  },
+  "platforms": {
+    "web": {
+      "path": "platforms/web.md",
+      "signals": ["web", "browser", "frontend", "spa", "react", "vue", "svelte", "next", "ssr", "pwa"]
+    },
+    "backend": {
+      "path": "platforms/backend.md",
+      "signals": ["backend", "server", "api", "service", "worker", "queue", "grpc", "rest", "graphql"]
+    },
+    "android": {
+      "path": "platforms/android.md",
+      "signals": ["android", "kotlin", "jetpack", "compose", "apk", "aab", "play store"]
+    },
+    "ios": {
+      "path": "platforms/ios.md",
+      "signals": ["ios", "iphone", "ipad", "swiftui", "uikit", "xcode", "app store"]
+    },
+    "macos": {
+      "path": "platforms/macos.md",
+      "signals": ["macos", "mac app", "appkit", "swiftui", "notarization", "menu bar"]
+    },
+    "windows": {
+      "path": "platforms/windows.md",
+      "signals": ["windows", "winui", "wpf", "uwp", "msix", "win32", "dotnet"]
+    },
+    "linux": {
+      "path": "platforms/linux.md",
+      "signals": ["linux", "systemd", "deb", "rpm", "flatpak", "snap", "daemon", "posix"]
+    },
+    "cross-platform": {
+      "path": "platforms/cross-platform.md",
+      "signals": ["cross-platform", "flutter", "react native", "expo", "kotlin multiplatform", "kmp", "maui", "shared code"]
+    },
+    "desktop": {
+      "path": "platforms/desktop.md",
+      "signals": ["desktop", "electron", "tauri", "qt", "gtk", "native app", "tray"]
+    }
+  },
+  "technologies": {
+    "typescript": {
+      "path": "technologies/languages/typescript.md",
+      "kind": "language",
+      "signals": ["typescript", "tsconfig", ".ts", ".tsx"]
+    },
+    "python": {
+      "path": "technologies/languages/python.md",
+      "kind": "language",
+      "signals": ["python", "pyproject.toml", "requirements.txt", ".py"]
+    },
+    "kotlin": {
+      "path": "technologies/languages/kotlin.md",
+      "kind": "language",
+      "signals": ["kotlin", "build.gradle.kts", ".kt"]
+    },
+    "swift": {
+      "path": "technologies/languages/swift.md",
+      "kind": "language",
+      "signals": ["swift", "package.swift", ".swift"]
+    },
+    "go": {
+      "path": "technologies/languages/go.md",
+      "kind": "language",
+      "signals": ["go", "go.mod", ".go"]
+    },
+    "rust": {
+      "path": "technologies/languages/rust.md",
+      "kind": "language",
+      "signals": ["rust", "cargo.toml", ".rs"]
+    },
+    "c-cpp": {
+      "path": "technologies/languages/c-cpp.md",
+      "kind": "language",
+      "signals": ["c++", "c language", "cmake", "makefile", ".c", ".cpp"]
+    },
+    "sql": {
+      "path": "technologies/languages/sql.md",
+      "kind": "language",
+      "signals": ["sql", "query", "migration", "index", "join"]
+    },
+    "react": {
+      "path": "technologies/frameworks/react.md",
+      "kind": "framework",
+      "signals": ["react", "jsx", "tsx", "next.js", "vite"]
+    },
+    "fastapi": {
+      "path": "technologies/frameworks/fastapi.md",
+      "kind": "framework",
+      "signals": ["fastapi", "pydantic", "uvicorn"]
+    },
+    "django": {
+      "path": "technologies/frameworks/django.md",
+      "kind": "framework",
+      "signals": ["django", "drf", "manage.py"]
+    },
+    "spring-boot": {
+      "path": "technologies/frameworks/spring-boot.md",
+      "kind": "framework",
+      "signals": ["spring", "spring boot", "jpa", "maven", "gradle"]
+    },
+    "dotnet": {
+      "path": "technologies/frameworks/dotnet.md",
+      "kind": "framework",
+      "signals": [".net", "dotnet", "asp.net", "c#", "entity framework", "wpf", "winui"]
+    },
+    "flutter": {
+      "path": "technologies/frameworks/flutter.md",
+      "kind": "framework",
+      "signals": ["flutter", "dart", "pubspec.yaml"]
+    },
+    "postgresql": {
+      "path": "technologies/databases/postgresql.md",
+      "kind": "database",
+      "signals": ["postgres", "postgresql", "psql", "pg", "rds"]
+    },
+    "sqlite": {
+      "path": "technologies/databases/sqlite.md",
+      "kind": "database",
+      "signals": ["sqlite", "sqlite3"]
+    },
+    "mongodb": {
+      "path": "technologies/databases/mongodb.md",
+      "kind": "database",
+      "signals": ["mongo", "mongodb", "mongoose", "atlas"]
+    },
+    "redis": {
+      "path": "technologies/databases/redis.md",
+      "kind": "database",
+      "signals": ["redis", "cache", "valkey", "ioredis"]
+    },
+    "firebase": {
+      "path": "technologies/databases/firebase.md",
+      "kind": "database",
+      "signals": ["firebase", "firestore", "security rules", "cloud functions"]
+    },
+    "docker": {
+      "path": "technologies/infrastructure/docker.md",
+      "kind": "infrastructure",
+      "signals": ["docker", "dockerfile", "compose", "container"]
+    },
+    "kubernetes": {
+      "path": "technologies/infrastructure/kubernetes.md",
+      "kind": "infrastructure",
+      "signals": ["kubernetes", "k8s", "helm", "kubectl", "cluster", "pod"]
+    },
+    "ci-cd": {
+      "path": "technologies/infrastructure/ci-cd.md",
+      "kind": "infrastructure",
+      "signals": ["ci", "cd", "pipeline", "github actions", "gitlab ci", "jenkins", "build"]
+    },
+    "cloud": {
+      "path": "technologies/infrastructure/cloud.md",
+      "kind": "infrastructure",
+      "signals": ["aws", "azure", "gcp", "cloud", "s3", "lambda", "serverless", "terraform"]
+    }
+  },
+  "security": {
+    "baseline": {
+      "path": "security/baseline.md",
+      "when": "Every implementation, review, and release task"
+    },
+    "input": {
+      "path": "security/input.md",
+      "when": "Untrusted input, HTML, files, parsers, queries, or shell commands"
+    },
+    "auth": {
+      "path": "security/auth.md",
+      "when": "Authentication, sessions, tokens, passwords, permissions, or roles"
+    },
+    "database": {
+      "path": "security/database.md",
+      "when": "Persistent data, migrations, backups, or personal data"
+    },
+    "api": {
+      "path": "security/api.md",
+      "when": "HTTP, GraphQL, WebSocket, webhook, or RPC surface"
+    },
+    "frontend": {
+      "path": "security/frontend.md",
+      "when": "Browser rendering, storage, CSP, or third-party scripts"
+    },
+    "native": {
+      "path": "security/native.md",
+      "when": "Mobile or desktop application, permissions, keychain, or IPC"
+    },
+    "infrastructure": {
+      "path": "security/infrastructure.md",
+      "when": "Containers, cluster, network, deployment, or monitoring"
+    },
+    "supply-chain": {
+      "path": "security/supply-chain.md",
+      "when": "Dependencies, CI, build artifacts, or release signing"
+    },
+    "testing": {
+      "path": "security/testing.md",
+      "when": "Security testing or scanner triage"
+    },
+    "gate": {
+      "path": "security/gate.md",
+      "when": "Release or production readiness"
+    }
+  }
+}
