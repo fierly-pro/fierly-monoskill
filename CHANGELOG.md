@@ -23,3 +23,8 @@ All notable changes to Fierly MonoSkill are documented here. Format follows Keep
 - Release gate with blocking critical findings and accountable risk acceptance for high findings.
 - Explicit anti-patterns for injection, authz, secrets, TLS, CORS, uploads, deserialization, CI permissions, and artifact signing.
 - MCP integration guidance treats tools, descriptions, and outputs as untrusted.
+
+### Fixed
+
+- Validator ignores `.git`, dependency, and cache directories, so a normal checkout with empty Git internals does not fail CI.
+- Scanner treats “export” as a word, not as the Expo framework, and states the security-module cap.

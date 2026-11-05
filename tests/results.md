@@ -1,6 +1,6 @@
 # Evaluation Results
 
-Last run: **2026-11-04**  
+Last run: **2026-11-05**  
 Environment: Linux, Python 3.14.4, git 2.53.0, `uvx` available.
 
 ## Scope and honesty statement
@@ -45,6 +45,7 @@ An earlier independent routing pass identified the issues listed under “Issues
 | Scanner treated the word “export” as the “expo” framework (`expo` is a substring) | Changed to a word-boundary match; `hozdar-shop` now routes to `web`+`backend`, not `cross-platform` |
 | Scanner suggested more than 5 attack-surface modules without stating the cap | Output now says “choose baseline + ≤5 matching the attack surface” |
 | No dedicated modules for Rails, Laravel/Symfony, Express/NestJS, ASP.NET, Gin, Axum | Documented as a known coverage limitation in `ARCHITECTURE.md`; fallback is core + platform + official docs |
+| After `git init`, the validator scanned `.git` and failed on empty Git internals (`.git/branches`, `.git/objects/info`, `.git/objects/pack`) | `scripts/validate.py` now excludes `.git`, dependency, and cache directories from link, placeholder, duplicate, and empty-directory checks; CI no longer fails for a clean clone |
 
 ## Executed checks
 

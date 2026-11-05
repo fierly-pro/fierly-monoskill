@@ -17,6 +17,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 ERRORS = []
 WARNINGS = []
+EXCLUDED_DIRS = {".git", "node_modules", ".venv", "__pycache__", ".idea", ".vscode"}
+
+
+def iter_repo(pattern: str):
+    """Yield repository paths, excluding VCS, dependency, and cache directories."""
+    for path in ROOT.rglob(pattern):
+        if any(part in EXCLUDED_DIRS for part in path.relative_to(ROOT).parts):
+            continue
+        yield path
 
 
 def error(message: str) -> None:
@@ -203,7 +212,7 @@ def check_modules():
             warn(f"{rel(path)}: estimated {len(text) // 4} tokens; consider splitting")
         if len(lines) > 400:
             warn(f"{rel(path)}: {len(lines)} lines; check density")
-    nested = [p for p in ROOT.rglob("SKILL.md") if p != ROOT / "SKILL.md"]
+    nested = [p for p in iter_repo("SKILL.md") if p != ROOT / "SKILL.md"]
     if nested:
         error(
             f"nested SKILL.md files are not allowed in a single-skill tree: {[rel(p) for p in nested]}"
@@ -211,7 +220,7 @@ def check_modules():
 
 
 def check_links():
-    all_markdown = sorted(ROOT.rglob("*.md"))
+    all_markdown = sorted(iter_repo("*.md"))
     link_re = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
     for path in all_markdown:
         text = read(path)
@@ -266,7 +275,7 @@ def check_unsafe_patterns():
         r"curl\s+[^|\n]*\|\s*(ba)?sh",
     ]
     negative = ("never", "do not", "don't", "avoid", "prohibit", "для", "не ")
-    for path in sorted(ROOT.rglob("*.md")):
+    for path in sorted(iter_repo("*.md")):
         for lineno, line in enumerate(read(path).splitlines(), 1):
             for pattern in patterns:
                 if re.search(pattern, line, re.I):
@@ -280,7 +289,7 @@ def check_unsafe_patterns():
 def check_placeholders():
     pattern = re.compile(r"\b(TODO|TBD|FIXME|LOREM IPSUM)\b", re.I)
     skip = {ROOT / "CONTRIBUTING.md", ROOT / "scripts" / "validate.py"}
-    for path in sorted(ROOT.rglob("*")):
+    for path in sorted(iter_repo("*")):
         if not path.is_file() or path in skip:
             continue
         if path.suffix.lower() not in (
@@ -299,7 +308,7 @@ def check_placeholders():
 def check_duplicates():
     counts = Counter()
     locations = {}
-    for path in sorted(ROOT.rglob("*.md")):
+    for path in sorted(iter_repo("*.md")):
         for lineno, line in enumerate(read(path).splitlines(), 1):
             normalized = re.sub(r"\s+", " ", line.strip().lower())
             if len(normalized) < 70 or normalized.startswith(("|", "- [", "#", ">")):
@@ -314,7 +323,7 @@ def check_duplicates():
 
 
 def check_empty_dirs():
-    for path in sorted(ROOT.rglob("*")):
+    for path in sorted(iter_repo("*")):
         if path.is_dir() and not any(path.iterdir()):
             error(f"empty directory: {rel(path)}")
 
@@ -349,7 +358,7 @@ def main() -> int:
         print(f"WARN  {message}")
     for message in ERRORS:
         print(f"FAIL  {message}")
-    markdown_files = list(ROOT.rglob("*.md"))
+    markdown_files = list(iter_repo("*.md"))
     total_chars = sum(len(read(p)) for p in markdown_files)
     print(
         f"\nSummary: {len(markdown_files)} Markdown files, "
